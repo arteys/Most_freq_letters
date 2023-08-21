@@ -1,0 +1,43 @@
+
+test_string = "N. Bukin, C. McKeever, E. Burgos-Parra, P. S. Keatley, R. J. Hicken, F. Y. Ogrin, G. Beutier, M. Dupraz, H. Popescu, N. Jaouen, F. Yakhou-Harris, S. A. Cavill, G. van der Laan "
+
+#Split names
+test_array = test_string.split(", ")
+
+#Drop names
+last_names = []
+
+for full_name in test_array:
+    parts = full_name.split(" ")
+    last_name = parts[-1]
+    last_names.append(last_name)
+
+
+letter_freq = {}
+
+# Iterate over each word in the list
+for word in last_names:
+    # Iterate over each letter in the word
+    for letter in word:
+        # If the letter is not already in the dictionary, add it with a count of 1
+        if letter not in letter_freq:
+            letter_freq[letter] = 1
+        # If the letter is already in the dictionary, increment its count by 1
+        else:
+            letter_freq[letter] += 1
+
+# Find the letter with the highest frequency
+most_freq_letter = max(letter_freq, key=letter_freq.get)
+
+# Sort the dictionary by its values (counts) in descending order
+sorted_freq = sorted(letter_freq.items(), key=lambda x: x[1], reverse=True)
+
+# Print the letters and their frequencies in order
+for item in sorted_freq:
+    print(item[0], item[1])
+
+
+for item in sorted_freq:
+    print(item[0], end="")
+
+
